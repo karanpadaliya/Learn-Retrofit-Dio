@@ -13,8 +13,8 @@ class _HomeScreenState extends State<HomeScreen> {
   UserList userList = UserList();
   bool isLoading = true;
 
-  fetchList() {
-    apiServices
+  Future<void> fetchList() async {
+    await apiServices
         .getUserList()
         .then((value) {
           setState(() {
@@ -23,6 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         })
         .onError((error, stackTrace) {
+          setState(() {
+            isLoading = false;
+          });
           print('Error==> ${error}');
         });
   }
@@ -40,17 +43,22 @@ class _HomeScreenState extends State<HomeScreen> {
       body:
           isLoading
               ? Center(child: CircularProgressIndicator())
-              : ListView.builder(
-                itemCount: userList.data?.length ?? 0,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: CircleAvatar(
-                      child: Text(userList.data![index].id.toString()),
-                    ),
-                    title: Text(userList.data![index].firstName.toString()),
-                    subtitle: Text(userList.data![index].email.toString()),
-                  );
-                },
+              : RefreshIndicator(
+                onRefresh: fetchList,
+                child: ListView.builder(
+                  itemCount: userList.data?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          userList.data![index].avatar.toString(),
+                        ),
+                      ),
+                      title: Text(userList.data![index].firstName.toString()),
+                      subtitle: Text(userList.data![index].email.toString()),
+                    );
+                  },
+                ),
               ),
     );
   }
