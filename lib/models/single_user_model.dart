@@ -1,10 +1,10 @@
-class SingleUserDetails {
+class SingleUserModel {
   Data? data;
   Support? support;
 
-  SingleUserDetails({this.data, this.support});
+  SingleUserModel({this.data, this.support});
 
-  SingleUserDetails.fromJson(Map<String, dynamic> json) {
+  SingleUserModel.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     support =
     json['support'] != null ? new Support.fromJson(json['support']) : null;

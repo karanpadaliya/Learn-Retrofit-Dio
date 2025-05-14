@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:learn_retrofit_dio/models/single_user_model.dart';
 import 'package:learn_retrofit_dio/models/user_list_model.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -12,5 +13,5 @@ abstract class ApiServices {
   Future<UserList> getUserList();
 
   @POST('api/users/{id}')
-  Future<UserList> getSingleUser(@Path('id') String id);
+  Future<SingleUserModel> getSingleUser(@Path('id') String id);
 }
