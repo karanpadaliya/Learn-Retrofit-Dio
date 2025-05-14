@@ -10,11 +10,4 @@ abstract class ApiServices {
 
   @GET('api/users?page=2')
   Future<UserList> getUserList();
-
-  //* ID pass in URL
-  // @POST('/api/users/2/{id}')
-  // Future<dynamic> getSingleUser(@Path('id') String id);
-
-  @POST('/api/users/2/{id}')
-  Future<dynamic> getSingleUser(@Path('id') String id);
 }
