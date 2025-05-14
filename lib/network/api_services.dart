@@ -10,4 +10,7 @@ abstract class ApiServices {
 
   @GET('api/users?page=2')
   Future<UserList> getUserList();
+
+  @POST('api/users/{id}')
+  Future<UserList> getSingleUser(@Path('id') String id);
 }
