@@ -117,8 +117,8 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; {
 <pre><code>
 @GET('api/users')
 Future&lt;UserList&gt; getUserList(@Query('page') int page);
-
-// Usage:
+<br>
+<b>// Usage:</b>
 final userList = await apiServices.getUserList(2);
 </code></pre>
 
@@ -126,8 +126,8 @@ final userList = await apiServices.getUserList(2);
 <pre><code>
 @GET('api/users/{id}')
 Future&lt;dynamic&gt; getSingleUser(@Path('id') String id);
-
-// Usage:
+<br>
+<b>// Usage:</b>
 final user = await apiServices.getSingleUser('2');
 </code></pre>
 
@@ -135,8 +135,8 @@ final user = await apiServices.getSingleUser('2');
 <pre><code>
 @POST('api/users')
 Future&lt;dynamic&gt; createUser(@Body() Map&lt;String, dynamic&gt; body);
-
-// Usage:
+<br>
+<b>// Usage:</b>
 final response = await apiServices.createUser({
   'name': 'John Doe',
   'job': 'Developer',
@@ -147,8 +147,8 @@ final response = await apiServices.createUser({
 <pre><code>
 @PUT('api/users/{id}')
 Future&lt;dynamic&gt; updateUser(@Path('id') String id, @Body() Map&lt;String, dynamic&gt; body);
-
-// Usage:
+<br>
+<b>// Usage:</b>
 final response = await apiServices.updateUser('2', {
   'name': 'Jane Doe',
   'job': 'Manager',
@@ -159,8 +159,8 @@ final response = await apiServices.updateUser('2', {
 <pre><code>
 @PATCH('api/users/{id}')
 Future&lt;dynamic&gt; patchUser(@Path('id') String id, @Body() Map&lt;String, dynamic&gt; body);
-
-// Usage:
+<br>
+<b>// Usage:</b>
 final response = await apiServices.patchUser('2', {
   'job': 'Lead Developer',
 });
@@ -170,8 +170,8 @@ final response = await apiServices.patchUser('2', {
 <pre><code>
 @DELETE('api/users/{id}')
 Future&lt;dynamic&gt; deleteUser(@Path('id') String id);
-
-// Usage:
+<br>
+<b>// Usage:</b>
 final response = await apiServices.deleteUser('2');
 </code></pre>
 
@@ -179,7 +179,7 @@ final response = await apiServices.deleteUser('2');
 <pre><code>
 @GET('api/users')
 Future&lt;UserList&gt; getUserListWithQuery(@Queries() Map&lt;String, dynamic&gt; queries);
-
-// Usage:
+<br>
+<b>// Usage:</b>
 final userList = await apiServices.getUserListWithQuery({'page': 2, 'per_page': 5});
 </code></pre>
