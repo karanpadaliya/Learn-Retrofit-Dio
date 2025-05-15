@@ -1,3 +1,3 @@
-export 'create_user/create_user_show_model.dart';
-export 'create_user/create_user_request_model.dart';
-export 'single_user_model.dart';
+export 'create_user_model/show_create_user_model.dart';
+export 'create_user_model/request_create_user_model.dart';
+export 'fetch_user_model/fetch_single_user_model.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../network/injection.dart';
 import '/models/models.dart';
-import '../models/user_list_model.dart';
+import '../models/fetch_user_model/fetch_all_user_list_model.dart';
 import '../network/api_services.dart';
 import 'package:dio/dio.dart';
 
@@ -15,7 +15,6 @@ class UserRepository {
   static final UserRepository userRepository = UserRepository._();
 
   // Fetch all the users
-
   Future<UserList> fetchAllUserList() async {
     try {
       final userList = await apiServices.getUserList();
@@ -27,7 +26,6 @@ class UserRepository {
   }
 
   // Fetch single user details
-
   Future<SingleUserModel> singleUserDetails(String userId) async {
     try {
       final singleInfo = await apiServices.getSingleUser(userId);
@@ -52,5 +50,3 @@ class UserRepository {
     }
   }
 }
-
-

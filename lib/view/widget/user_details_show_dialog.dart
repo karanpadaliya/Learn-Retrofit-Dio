@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_retrofit_dio/models/single_user_model.dart';
+import 'package:learn_retrofit_dio/models/fetch_user_model/fetch_single_user_model.dart';
 import 'package:learn_retrofit_dio/config/user_repository.dart';
 
 class UserDetailsShowDialog extends StatelessWidget {

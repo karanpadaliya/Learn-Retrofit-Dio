@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/user_list_model.dart';
+import '../models/fetch_user_model/fetch_all_user_list_model.dart';
 import '/config/config.dart';
 import 'widget/widget.dart';
 
