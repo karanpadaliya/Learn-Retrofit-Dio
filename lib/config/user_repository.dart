@@ -28,7 +28,10 @@ class UserRepository {
   // Fetch single user details
   Future<SingleUserModel> singleUserDetails(String userId) async {
     try {
-      final singleInfo = await apiServices.getSingleUser(userId);
+      final singleInfo = await apiServices.getSingleUser(
+        'reqres-free-v1',
+        userId,
+      );
       return singleInfo;
     } catch (error) {
       print('Error fetching single user details: $error');

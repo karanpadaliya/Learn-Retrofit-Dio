@@ -47,10 +47,11 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<SingleUserModel> getSingleUser(String id) async {
+  Future<SingleUserModel> getSingleUser(String apiKey, String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'x-api-key': apiKey};
+    _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<SingleUserModel>(
       Options(method: 'GET', headers: _headers, extra: _extra)

@@ -15,8 +15,10 @@ abstract class ApiServices {
 
   // Fetch single user
   @GET('api/users/{id}')
-  @Header('{"x-api-key": "reqres-free-v1"}')
-  Future<SingleUserModel> getSingleUser(@Path('id') String id);
+  Future<SingleUserModel> getSingleUser(
+    @Header('x-api-key') String apiKey,
+    @Path('id') String id,
+  );
 
   // Create a user
   @POST('api/users')

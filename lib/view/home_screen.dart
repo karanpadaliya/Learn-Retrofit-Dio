@@ -22,11 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> fetchUsers() async {
-    final fetchedList = await
-    userRepo.fetchAllUserList();
+    final fetchedList = await userRepo.fetchAllUserList();
     setState(() {
-    userList = fetchedList;
-    isLoading = false;
+      userList = fetchedList;
+      isLoading = false;
     });
   }
 
@@ -48,31 +47,31 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Expanded(
               child:
-              isLoading
-                  ? Center(child: CircularProgressIndicator())
-                  : RefreshIndicator(
-                onRefresh: userRepo.fetchAllUserList,
-                child: ListView.builder(
-                  itemCount: userList.data?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final user = userList.data![index];
-                    return InkWell(
-                      onTap: () {
-                        showUserDetails(user.id.toString());
-                      },
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            user.avatar.toString(),
-                          ),
+                  isLoading
+                      ? Center(child: CircularProgressIndicator())
+                      : RefreshIndicator(
+                        onRefresh: userRepo.fetchAllUserList,
+                        child: ListView.builder(
+                          itemCount: userList.data?.length ?? 0,
+                          itemBuilder: (context, index) {
+                            final user = userList.data![index];
+                            return InkWell(
+                              onTap: () {
+                                showUserDetails(user.id.toString());
+                              },
+                              child: ListTile(
+                                leading: CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                    user.avatar.toString(),
+                                  ),
+                                ),
+                                title: Text(user.firstName.toString()),
+                                subtitle: Text(user.email.toString()),
+                              ),
+                            );
+                          },
                         ),
-                        title: Text(user.firstName.toString()),
-                        subtitle: Text(user.email.toString()),
                       ),
-                    );
-                  },
-                ),
-              ),
             ),
 
             Row(
