@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:learn_retrofit_dio/models/single_user_model.dart';
-import 'package:learn_retrofit_dio/models/user_list_model.dart';
+import 'package:learn_retrofit_dio/models/models.dart';
 import 'package:retrofit/retrofit.dart';
+import '../models/user_list_model.dart';
 
 part 'api_services.g.dart';
 
@@ -12,6 +12,13 @@ abstract class ApiServices {
   @GET('api/users?page=2')
   Future<UserList> getUserList();
 
-  @POST('api/users/{id}')
+  @GET('api/users/{id}')
+  @Header('{"x-api-key": "reqres-free-v1"}')
   Future<SingleUserModel> getSingleUser(@Path('id') String id);
+
+  @POST('api/users')
+  Future<CreateUserModel> createUser(
+    @Header('x-api-key') String apiKey,
+    @Body() CreateUserRequest request,
+  );
 }

@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:learn_retrofit_dio/models/single_user_model.dart';
 import 'package:learn_retrofit_dio/config/user_repository.dart';
 
-class UserDetailsDialog extends StatelessWidget {
+class UserDetailsShowDialog extends StatelessWidget {
   final String userId;
 
-  const UserDetailsDialog({super.key, required this.userId});
+  const UserDetailsShowDialog({super.key, required this.userId});
 
   @override
   Widget build(BuildContext context) {
+    UserRepository userRepo = UserRepository.userRepository;
     return FutureBuilder<SingleUserModel>(
-      future: UserRepository().singleUserDetails(userId),
+      future: userRepo.singleUserDetails(userId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return AlertDialog(
