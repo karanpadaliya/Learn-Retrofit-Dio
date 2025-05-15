@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:learn_retrofit_dio/models/create_user/create_user_request_model.dart';
-
 import '../../config/user_repository.dart';
+import 'widget.dart';
 
 class CreateUserDialog extends StatefulWidget {
-  // final Function(String name, String job) onSubmit;
-
-  const CreateUserDialog({Key? key}) : super(key: key);
+  const CreateUserDialog({super.key});
 
   @override
   State<CreateUserDialog> createState() => _CreateUserDialogState();
@@ -53,13 +50,34 @@ class _CreateUserDialogState extends State<CreateUserDialog> {
           child: const Text('Cancel'),
         ),
         ElevatedButton(
-          onPressed: () {
+          onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              UserRepository.userRepository.createUser(
-                _nameController.text.trim(),
-                _jobController.text.trim(),
-              );
-              Navigator.pop(context);
+              try {
+                final createUserData = await UserRepository.userRepository
+                    .createUser(
+                      _nameController.text.trim(),
+                      _jobController.text.trim(),
+                    );
+                if (context.mounted) Navigator.pop(context);
+                if (context.mounted) {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return UserStatusDialog(user: createUserData);
+                    },
+                  );
+                }
+              } catch (error) {
+                if (context.mounted) Navigator.pop(context);
+                if (context.mounted) {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return UserStatusDialog(error: error.toString());
+                    },
+                  );
+                }
+              }
             }
           },
           child: const Text('Submit'),

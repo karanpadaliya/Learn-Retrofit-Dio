@@ -1,12 +1,12 @@
-class CreateUserModel {
+class CreateUserShowModel {
   String? name;
   String? job;
   String? id;
   String? createdAt;
 
-  CreateUserModel({this.name, this.job, this.id, this.createdAt});
+  CreateUserShowModel({this.name, this.job, this.id, this.createdAt});
 
-  CreateUserModel.fromJson(Map<String, dynamic> json) {
+  CreateUserShowModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     job = json['job'];
     id = json['id'];

@@ -17,8 +17,8 @@ abstract class ApiServices {
   Future<SingleUserModel> getSingleUser(@Path('id') String id);
 
   @POST('api/users')
-  Future<CreateUserModel> createUser(
+  Future<CreateUserShowModel> createUser(
     @Header('x-api-key') String apiKey,
-    @Body() CreateUserRequest request,
+    @Body() CreateUserRequestModel request,
   );
 }

@@ -74,9 +74,9 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<CreateUserModel> createUser(
+  Future<CreateUserShowModel> createUser(
     String apiKey,
-    CreateUserRequest request,
+    CreateUserRequestModel request,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -84,7 +84,7 @@ class _ApiServices implements ApiServices {
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(request.toJson());
-    final _options = _setStreamType<CreateUserModel>(
+    final _options = _setStreamType<CreateUserShowModel>(
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -95,9 +95,9 @@ class _ApiServices implements ApiServices {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CreateUserModel _value;
+    late CreateUserShowModel _value;
     try {
-      _value = CreateUserModel.fromJson(_result.data!);
+      _value = CreateUserShowModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
