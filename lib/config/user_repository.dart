@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../network/injection.dart';
 import '/models/models.dart';
 import '../models/fetch_user_model/fetch_all_user_list_model.dart';
 import '../network/api_services.dart';
