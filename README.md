@@ -9,12 +9,12 @@ Add the generator to your dev dependencies
 
 ```yaml
 dependencies:
-    retrofit: ^x.x.x
-    dio: ^x.x.x
+  retrofit: ^x.x.x
+  dio: ^x.x.x
 
 dev_dependencies:
-   retrofit_generator: ^x.x.x
-   build_runner: ^x.x.x
+  retrofit_generator: ^x.x.x
+  build_runner: ^x.x.x
 ```
 <hr>
 
@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 ```dart
 @GET('api/users')
-Future UserList getUserList(@Query('page') int page);
+Future  UserList getUserList(@Query('page') int page);
 
 // Usage:
 final userList = await apiServices.getUserList(2);
@@ -195,7 +195,7 @@ final userList = await apiServices.getUserList(2);
 
 ```dart  
 @GET('api/users/{id}')
-Future dynamic getSingleUser(@Path('id') String id);
+Future  dynamic getSingleUser(@Path('id') String id);
 
 // Usage:
 final user = await apiServices.getSingleUser('2');
@@ -205,7 +205,7 @@ final user = await apiServices.getSingleUser('2');
 
 ```dart  
 @POST('api/users')
-Future dynamic createUser(@Body() Map String, dynamic body);
+Future  dynamic createUser(@Body() Map  String, dynamic body);
 
 // Usage:
 final response = await apiServices.createUser({
@@ -218,7 +218,7 @@ final response = await apiServices.createUser({
 
 ```dart
 @PUT('api/users/{id}')
-Future dynamic updateUser(@Path('id') String id, @Body() Map String, dynamic body);
+Future  dynamic updateUser(@Path('id') String id, @Body() Map  String, dynamic body);
 
 // Usage:
 final response = await apiServices.updateUser('2', {
@@ -231,7 +231,7 @@ final response = await apiServices.updateUser('2', {
 
 ```dart
 @PATCH('api/users/{id}')
-Future dynamic patchUser(@Path('id') String id, @Body() Map String, dynamic body);
+Future  dynamic patchUser(@Path('id') String id, @Body() Map  String, dynamic body);
 
 // Usage:
 final response = await apiServices.patchUser('2', {
@@ -243,7 +243,7 @@ final response = await apiServices.patchUser('2', {
 
 ```dart
 @DELETE('api/users/{id}')
-Future dynamic deleteUser(@Path('id') String id);
+Future  dynamic deleteUser(@Path('id') String id);
 
 // Usage:
 final response = await apiServices.deleteUser('2');
@@ -253,7 +253,7 @@ final response = await apiServices.deleteUser('2');
 
 ```dart  
 @GET('api/users')
-Future UserList getUserListWithQuery(@Queries() Map String, dynamic queries);
+Future  UserList getUserListWithQuery(@Queries() Map  String, dynamic queries);
 
 // Usage:
 final userList = await apiServices.getUserListWithQuery({
@@ -261,7 +261,6 @@ final userList = await apiServices.getUserListWithQuery({
   'per_page': 5,
 });
 ```
-
 <hr>
 
 <h2>🎯 Summary</h2>
