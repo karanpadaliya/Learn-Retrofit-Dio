@@ -4,19 +4,19 @@
 
 <hr>
 
-<h2>🔧 Step 1: Add Dependencies</h2>
-<pre><code>
-```dart
-  dependencies:
+### Generator
+
+Add the generator to your dev dependencies
+
+```yaml
+dependencies:
   retrofit: ^x.x.x
   dio: ^x.x.x
 
 dev_dependencies:
-  retrofit_generator: ^x.x.x
+   retrofit_generator: ^x.x.x
   build_runner: ^x.x.x
 ```
-</code></pre>
-
 <hr>
 
 <h2>📁 Step 2: Create <code>api_services.dart</code></h2>
