@@ -1,8 +1,11 @@
-<h1>Flutter Retrofit + Dio API Example</h1>
+<h1>🚀 Flutter Retrofit + Dio API Integration Guide</h1>
 
-<h2>Step 1: Add Dependencies</h2>
-<pre><code>
-dependencies:
+<p>This project demonstrates how to use <strong>Retrofit</strong> and <strong>Dio</strong> in a Flutter app for making clean and scalable API requests. This guide is beginner-friendly and covers all necessary steps including GET, POST, PUT, DELETE, PATCH, and Query Parameters usage.</p>
+
+<hr>
+
+<h2>🔧 Step 1: Add Dependencies</h2>
+<pre><code>dependencies:
   retrofit: ^x.x.x
   dio: ^x.x.x
 
@@ -11,9 +14,10 @@ dev_dependencies:
   build_runner: ^x.x.x
 </code></pre>
 
-<h2>Step 2: Create api_services.dart</h2>
-<pre><code>
-import 'package:retrofit/retrofit.dart';
+<hr>
+
+<h2>📁 Step 2: Create <code>api_services.dart</code></h2>
+<pre><code>import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 import 'package:learn_retrofit_dio/models/user_list_model.dart';
 
@@ -28,27 +32,29 @@ abstract class ApiServices {
 }
 </code></pre>
 
-<h2>Step 3: Create Model & Injection</h2>
+<hr>
 
-<h3>➤ Generate Model</h3>
-<p>Use: <a href="https://javiercbk.github.io/json_to_dart/" target="_blank">Json to Dart Converter</a></p>
+<h2>🧠 Step 3: Create Model & Injection</h2>
 
-<h3>➤ injection.dart</h3>
-<pre><code>
-import 'package:dio/dio.dart';
+<h3>📌 1. Generate Model</h3>
+<p>Use this tool to convert JSON to Dart: <a href="https://javiercbk.github.io/json_to_dart/" target="_blank">Json to Dart Converter</a></p>
+
+<h3>📌 2. Create <code>injection.dart</code></h3>
+<pre><code>import 'package:dio/dio.dart';
 import 'package:learn_retrofit_dio/network/api_services.dart';
 
 final apiServices = ApiServices(Dio());
 </code></pre>
 
-<h2>Step 4: Generate .g.dart file</h2>
-<pre><code>
-flutter pub run build_runner build
-</code></pre>
+<hr>
 
-<h2>Step 5: Show API Data in Project</h2>
-<pre><code>
-import 'package:flutter/material.dart';
+<h2>⚙️ Step 4: Generate <code>.g.dart</code> File</h2>
+<pre><code>flutter pub run build_runner build</code></pre>
+
+<hr>
+
+<h2>🖥️ Step 5: Display API Data in Flutter</h2>
+<pre><code>import 'package:flutter/material.dart';
 import 'package:learn_retrofit_dio/models/user_list_model.dart';
 import 'package:learn_retrofit_dio/network/injection.dart';
 
@@ -111,32 +117,31 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; {
 }
 </code></pre>
 
-<h2>API Services Examples</h2>
+<hr>
+
+<h2>📡 API Services Examples</h2>
 
 <h3>✅ 1. GET Request (List of Users)</h3>
-<pre><code>
-@GET('api/users')
+<pre><code>@GET('api/users')
 Future&lt;UserList&gt; getUserList(@Query('page') int page);
-<br>
-<b>// Usage:</b>
+
+// Usage:
 final userList = await apiServices.getUserList(2);
 </code></pre>
 
-<h3>✅ 2. GET Request (Single User by ID - Path Param)</h3>
-<pre><code>
-@GET('api/users/{id}')
+<h3>✅ 2. GET Request with Path Param (Single User)</h3>
+<pre><code>@GET('api/users/{id}')
 Future&lt;dynamic&gt; getSingleUser(@Path('id') String id);
-<br>
-<b>// Usage:</b>
+
+// Usage:
 final user = await apiServices.getSingleUser('2');
 </code></pre>
 
 <h3>✅ 3. POST Request (Create User)</h3>
-<pre><code>
-@POST('api/users')
+<pre><code>@POST('api/users')
 Future&lt;dynamic&gt; createUser(@Body() Map&lt;String, dynamic&gt; body);
-<br>
-<b>// Usage:</b>
+
+// Usage:
 final response = await apiServices.createUser({
   'name': 'John Doe',
   'job': 'Developer',
@@ -144,11 +149,10 @@ final response = await apiServices.createUser({
 </code></pre>
 
 <h3>✅ 4. PUT Request (Full Update)</h3>
-<pre><code>
-@PUT('api/users/{id}')
+<pre><code>@PUT('api/users/{id}')
 Future&lt;dynamic&gt; updateUser(@Path('id') String id, @Body() Map&lt;String, dynamic&gt; body);
-<br>
-<b>// Usage:</b>
+
+// Usage:
 final response = await apiServices.updateUser('2', {
   'name': 'Jane Doe',
   'job': 'Manager',
@@ -156,30 +160,41 @@ final response = await apiServices.updateUser('2', {
 </code></pre>
 
 <h3>✅ 5. PATCH Request (Partial Update)</h3>
-<pre><code>
-@PATCH('api/users/{id}')
+<pre><code>@PATCH('api/users/{id}')
 Future&lt;dynamic&gt; patchUser(@Path('id') String id, @Body() Map&lt;String, dynamic&gt; body);
-<br>
-<b>// Usage:</b>
+
+// Usage:
 final response = await apiServices.patchUser('2', {
   'job': 'Lead Developer',
 });
 </code></pre>
 
 <h3>✅ 6. DELETE Request</h3>
-<pre><code>
-@DELETE('api/users/{id}')
+<pre><code>@DELETE('api/users/{id}')
 Future&lt;dynamic&gt; deleteUser(@Path('id') String id);
-<br>
-<b>// Usage:</b>
+
+// Usage:
 final response = await apiServices.deleteUser('2');
 </code></pre>
 
-<h3>✅ 7. GET with Query Parameters</h3>
-<pre><code>
-@GET('api/users')
+<h3>✅ 7. GET with Multiple Query Parameters</h3>
+<pre><code>@GET('api/users')
 Future&lt;UserList&gt; getUserListWithQuery(@Queries() Map&lt;String, dynamic&gt; queries);
-<br>
-<b>// Usage:</b>
-final userList = await apiServices.getUserListWithQuery({'page': 2, 'per_page': 5});
+
+// Usage:
+final userList = await apiServices.getUserListWithQuery({
+  'page': 2,
+  'per_page': 5,
+});
 </code></pre>
+
+<hr>
+
+<h2>🎯 Summary</h2>
+<ul>
+  <li>✅ Retrofit makes HTTP API calls easier and cleaner in Flutter.</li>
+  <li>✅ Dio handles network operations efficiently with options for logging, interceptors, and more.</li>
+  <li>✅ You can handle GET, POST, PUT, PATCH, DELETE, and use Query/Path parameters using Retrofit decorators.</li>
+</ul>
+
+<p><strong>⭐ Happy Coding!</strong></p>
