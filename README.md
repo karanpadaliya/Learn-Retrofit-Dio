@@ -5,19 +5,24 @@
 <hr>
 
 <h2>🔧 Step 1: Add Dependencies</h2>
-<pre><code>dependencies:
+<pre><code>
+  ```
+  dependencies:
   retrofit: ^x.x.x
   dio: ^x.x.x
 
 dev_dependencies:
   retrofit_generator: ^x.x.x
   build_runner: ^x.x.x
+```
 </code></pre>
 
 <hr>
 
 <h2>📁 Step 2: Create <code>api_services.dart</code></h2>
-<pre><code>import 'package:dio/dio.dart';
+<pre><code>
+```
+import 'package:dio/dio.dart';
 import 'package:learn_retrofit_dio/models/models.dart';
 import 'package:retrofit/retrofit.dart';
 import '../models/fetch_user_model/fetch_all_user_list_model.dart';
@@ -47,6 +52,7 @@ abstract class ApiServices {
   );
 }
 }
+```
 </code></pre>
 
 <hr>
