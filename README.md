@@ -6,7 +6,7 @@
 
 <h2>🔧 Step 1: Add Dependencies</h2>
 <pre><code>
-  ```
+```dart
   dependencies:
   retrofit: ^x.x.x
   dio: ^x.x.x
@@ -21,7 +21,7 @@ dev_dependencies:
 
 <h2>📁 Step 2: Create <code>api_services.dart</code></h2>
 <pre><code>
-```
+```dart
 import 'package:dio/dio.dart';
 import 'package:learn_retrofit_dio/models/models.dart';
 import 'package:retrofit/retrofit.dart';
